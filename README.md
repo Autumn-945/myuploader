@@ -1,91 +1,89 @@
-# myuploader
-基于Vue-element-template项目实现基于vue-simple-uploader封装文件分片上传、秒传及断点续传的全局上传插件
-# 基于Vue-element-template项目实现基于vue-simple-uploader封装文件分片上传、秒传及断点续传的全局上传插件
+# vue-admin-template
 
-最近做一个视频存储的项目，使用了Vue-element-template模板进行整合，其中有一个需求是做一个视频上传的断点续传功能，经过查询资料做出来了，过程如下：
+English | [简体中文](./README-zh.md)
 
-首先：先安装vue-simple-uploader插件，然后在main.js中引入使用。
+> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
 
-**安装：**`npm install vue-simple-uploader --save**`**
+**Live demo:** http://panjiachen.github.io/vue-admin-template
 
-**使用：**
 
-```
-import uploader from 'vue-simple-uploader'
-Vue.use(uploader)
-```
+**The current version is `v4.0+` build on `vue-cli`. If you want to use the old version , you can switch branch to [tag/3.11.0](https://github.com/PanJiaChen/vue-admin-template/tree/tag/3.11.0), it does not rely on `vue-cli`**
 
-然后引入common,components文件夹，讲这两个文件夹放到一个自己建好的uploader文件夹中。
+## Build Setup
 
-然后在与uploader文件夹同级下的index.vue文件中使用下面的代码即可
 
-```
-<template>
-  <div>
-    <uploader :options="options" :file-status-text="statusText" class="uploader-example" ref="uploader" @file-complete="fileComplete" @complete="complete"></uploader>
-  </div>
-</template>
+```bash
+# clone the project
+git clone https://github.com/PanJiaChen/vue-admin-template.git
 
-<script>
-  export default {
-    data () {
-      return {
-        options: {
-          target: 'http://120.24.78.29:8086/video/upload', // '//jsonplaceholder.typicode.com/posts/',
-          testChunks: false
-        },
-        attrs: {
-          accept: 'image/*'
-        },
-        statusText: {
-          success: '成功了',
-          error: '出错了',
-          uploading: '上传中',
-          paused: '暂停中',
-          waiting: '等待中'
-        }
-      }
-    },
-    methods: {
-      complete () {
-        console.log('complete', arguments)
-      },
-      fileComplete () {
-        console.log('file complete', arguments)
-      }
-    },
-    mounted () {
-      this.$nextTick(() => {
-        window.uploader = this.$refs.uploader.uploader
-      })
-    }
-  }
-</script>
+# enter the project directory
+cd vue-admin-template
 
-<style>
-  .uploader-example {
-    width: 880px;
-    padding: 15px;
-    margin: 40px auto 0;
-    font-size: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
-  }
-  .uploader-example .uploader-btn {
-    margin-right: 4px;
-  }
-  .uploader-example .uploader-list {
-    max-height: 440px;
-    overflow: auto;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-</style>
+# install dependency
+npm install
 
+# develop
+npm run dev
 ```
 
-参考如下链接：
+This will automatically open http://localhost:9528
 
-[](https://www.cnblogs.com/xiahj/p/vue-simple-uploader.html)
+## Build
 
-最后附上源码：
+```bash
+# build for test environment
+npm run build:stage
 
+# build for production environment
+npm run build:prod
+```
+
+## Advanced
+
+```bash
+# preview the release environment effect
+npm run preview
+
+# preview the release environment effect + static resource analysis
+npm run preview -- --report
+
+# code format check
+npm run lint
+
+# code format check and auto fix
+npm run lint -- --fix
+```
+
+Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/guide/essentials/deploy.html) for more information
+
+## Demo
+
+![demo](https://github.com/PanJiaChen/PanJiaChen.github.io/blob/master/images/demo.gif)
+
+## Extra
+
+If you want router permission && generate menu by user roles , you can use this branch [permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
+
+For `typescript` version, you can use [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) (Credits: [@Armour](https://github.com/Armour))
+
+## Related Project
+
+[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
+
+[electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
+
+[vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template)
+
+## Browsers support
+
+Modern browsers and Internet Explorer 10+.
+
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
+| --------- | --------- | --------- | --------- |
+| IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions
+
+## License
+
+[MIT](https://github.com/PanJiaChen/vue-admin-template/blob/master/LICENSE) license.
+
+Copyright (c) 2017-present PanJiaChen
